@@ -1,0 +1,31 @@
+<h1>DODAJ AKTIVNOST</h1>
+<hr />
+<form [formGroup]="form">
+  <label for="">Tip aktivnosti: </label>
+  <select name="tip" formControlName="tip">
+    <option value="Studiranje">Studiranje</option>
+    <option value="Rekreacija">Rekreacija</option>
+  </select>
+  <br />
+  <label for="">Opis: </label> <br />
+  <textarea
+    name="opis"
+    formControlName="opis"
+    id=""
+    cols="30"
+    rows="10"
+  ></textarea>
+  <br />
+  <label for="">Prioritet(1-5): </label>
+  <input type="number" formControlName="prioritet" />
+  <br />
+  <label for="">Datum: </label>
+  <input type="date" formControlName="datum" />
+  <br />
+  <label for="">Vreme: </label>
+  <input type="time" formControlName="vreme" />
+
+  <br />
+  <br />
+  <button (click)="AddAktivnost()">Potvrdi</button>
+</form>
