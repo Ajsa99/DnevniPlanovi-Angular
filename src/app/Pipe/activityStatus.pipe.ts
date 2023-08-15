@@ -8,9 +8,6 @@ export class ActivityStatusPipe implements PipeTransform {
     const today = new Date();
     const activityDate = new Date(aktivnost.datum);
 
-    console.log('Danas' + today);
-    console.log('Drugo' + activityDate);
-
     if (activityDate < today) {
       return 'red'; // Aktivnost koja je prošla
     } else if (activityDate > today) {

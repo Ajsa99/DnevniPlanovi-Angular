@@ -1,8 +1,29 @@
 <ul>
-  <li [routerLink]="['/']" routerLinkActive="router-link-active">
+  <li
+    *ngIf="token"
+    [routerLink]="['/lista']"
+    routerLinkActive="router-link-active"
+  >
     Lista aktivnosti
   </li>
-  <li [routerLink]="['/addAktivnost']" routerLinkActive="router-link-active">
+  <li
+    *ngIf="token"
+    [routerLink]="['/addAktivnost']"
+    routerLinkActive="router-link-active"
+  >
     Dodaj aktivnost
   </li>
+  <li
+    *ngIf="!token"
+    [routerLink]="['/registration']"
+    routerLinkActive="router-link-active"
+  >
+    Registracija
+  </li>
+  <li *ngIf="!token" [routerLink]="['/']" routerLinkActive="router-link-active">
+    Logovanje
+  </li>
+  <li *ngIf="token" (click)="Logout()">Odjavi se</li>
 </ul>
+
+<h3 *ngIf="token">Korisnik: {{ ime }}</h3>

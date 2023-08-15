@@ -1,0 +1,10 @@
+<h1>LOGOVANJE</h1>
+<hr />
+<form [formGroup]="form">
+  <label for="">Ime</label> <br />
+  <input type="text" formControlName="ime" /> <br />
+  <label for="">Lozinka</label> <br />
+  <input type="text" formControlName="lozinka" /> <br />
+  <br />
+  <button (click)="Login()">Potvrdi</button>
+</form>

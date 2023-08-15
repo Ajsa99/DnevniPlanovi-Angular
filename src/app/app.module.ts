@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AktivnostService } from 'src/app/services/aktivnost.service';
 import { DetaljiAktivnostiComponent } from './detalji-aktivnosti/detalji-aktivnosti.component';
 import { ActivityStatusPipe } from './Pipe/activityStatus.pipe';
+import { RegistracijaComponent } from './registracija/registracija.component';
+import { LoginComponent } from './login/login.component';
+import { KorisnikService } from './services/korisnik.service';
 
 @NgModule({
   declarations: [
@@ -21,19 +24,23 @@ import { ActivityStatusPipe } from './Pipe/activityStatus.pipe';
     AddAktivnostComponent,
     DetaljiAktivnostiComponent,
     ActivityStatusPipe,
+    RegistracijaComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: ListaAktivnostiComponent },
+      { path: 'lista', component: ListaAktivnostiComponent },
       { path: 'addAktivnost', component: AddAktivnostComponent },
       { path: 'detailAktivnost/:id', component: DetaljiAktivnostiComponent },
+      { path: 'registration', component: RegistracijaComponent },
+      { path: '', component: LoginComponent },
     ]),
     HttpClientModule,
   ],
-  providers: [AktivnostService],
+  providers: [AktivnostService, KorisnikService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -10,6 +10,8 @@ import { Aktivnost } from '../model/Aktivnost';
 export class ListaAktivnostiComponent implements OnInit {
   aktivnosti!: Aktivnost[];
 
+  idKorisnka: any;
+
   isToday(dateString: string): boolean {
     const activityDate = new Date(dateString);
     const today = new Date();
@@ -34,6 +36,8 @@ export class ListaAktivnostiComponent implements OnInit {
       this.aktivnosti = response;
       console.log(response);
     });
+
+    this.idKorisnka = localStorage.getItem('id');
   }
 
   Status(id: number) {

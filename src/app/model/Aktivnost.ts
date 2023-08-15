@@ -5,4 +5,5 @@ export interface Aktivnost {
   prioritet: number;
   datum: string;
   vreme: string;
+  idKorisnika: number;
 }

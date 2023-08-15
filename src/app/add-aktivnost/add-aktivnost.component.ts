@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AktivnostService } from 'src/app/services/aktivnost.service';
 import { Aktivnost } from '../model/Aktivnost';
 
@@ -11,7 +12,12 @@ import { Aktivnost } from '../model/Aktivnost';
 export class AddAktivnostComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private aktivnostService: AktivnostService) {}
+  idKorisnika!: any;
+
+  constructor(
+    private aktivnostService: AktivnostService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -21,6 +27,8 @@ export class AddAktivnostComponent implements OnInit {
       datum: new FormControl('', [Validators.required]),
       vreme: new FormControl('', [Validators.required]),
     });
+
+    this.idKorisnika = localStorage.getItem('id');
   }
 
   get tip() {
@@ -50,6 +58,7 @@ export class AddAktivnostComponent implements OnInit {
     prioritet: 0,
     datum: '',
     vreme: '',
+    idKorisnika: 0,
   };
 
   AddAktivnost() {
@@ -60,6 +69,7 @@ export class AddAktivnostComponent implements OnInit {
       prioritet: this.prioritet?.value,
       datum: this.datum?.value,
       vreme: this.vreme?.value,
+      idKorisnika: this.idKorisnika,
     };
 
     if (this.form.valid) {
@@ -67,6 +77,7 @@ export class AddAktivnostComponent implements OnInit {
         .postAktivnost(this.aktivnost)
         .subscribe((response) => {
           console.log(response);
+          this.router.navigate(['/lista']);
         });
     }
   }
